@@ -10,10 +10,5 @@ import dev.paie.service.CalculerRemunerationServiceSimple;
 @Configuration
 @ComponentScan({"dev.paie.service", "dev.paie.util"})
 public class ServicesConfig {
-/*
-	@Bean
-	public CalculerRemunerationService calculerRemunerationService(){
-		return new CalculerRemunerationServiceSimple();	
-	}
-	*/
+
 }
