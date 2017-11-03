@@ -23,20 +23,29 @@ import dev.paie.spring.DataSourceMySQLConfig;
 @RunWith(SpringRunner.class)
 public class GradeServiceJdbcTemplateTest {
 
+	/** gradeService : GradeService */
 	@Autowired
 	private GradeService gradeService;
 
+	/** dataSource : DataSource */
 	@Autowired
 	DataSource dataSource;
 
+	/** jdbcTemplate : JdbcTemplate */
 	private JdbcTemplate jdbcTemplate;
 
+	/**
+	 * Truncate de la table avant les tests
+	 */
 	@Before
 	public void truncate() {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.execute("TRUNCATE TABLE GRADE");
 	}
 
+	/**
+	 * test de sauvegarde et de modification
+	 */
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
 
@@ -57,7 +66,7 @@ public class GradeServiceJdbcTemplateTest {
 		gradeService.mettreAJour(grade);
 
 		Optional<Grade> grade3 = gradeService.lister().stream().filter(g -> g.getCode().equals("GRA2")).findFirst();
-		if (grade2.isPresent()) {
+		if (grade3.isPresent()) {
 			assertThat(grade).isEqualTo(grade3.get());
 		}
 	}

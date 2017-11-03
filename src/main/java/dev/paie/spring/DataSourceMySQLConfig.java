@@ -11,6 +11,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @ComponentScan({ "dev.paie.spring", "dev.paie.service", "dev.paie.util" })
 public class DataSourceMySQLConfig {
 
+	/** Bean de dataSource
+	 * @return
+	 */
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
