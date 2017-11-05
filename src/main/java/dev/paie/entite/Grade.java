@@ -3,6 +3,7 @@ package dev.paie.entite;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
+@Entity
 public class Grade {
 
 	@Id
@@ -21,6 +23,16 @@ public class Grade {
 	private BigDecimal nbHeuresBase;
 	@Column
 	private BigDecimal tauxBase;
+
+	public Grade() {
+		super();
+	}
+
+	public Grade(String code, BigDecimal nbHeuresBase, BigDecimal tauxBase) {
+		this.code = code;
+		this.nbHeuresBase = nbHeuresBase;
+		this.tauxBase = tauxBase;
+	}
 
 	public String getCode() {
 		return code;

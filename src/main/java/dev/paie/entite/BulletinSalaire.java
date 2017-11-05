@@ -7,18 +7,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class BulletinSalaire {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column
+	@OneToOne
+	@JoinColumn(name = "ID_REM")
 	private RemunerationEmploye remunerationEmploye;
-	@Column
+	@OneToOne
+	@JoinColumn(name = "ID_PERIOD")
 	private Periode periode;
 	@Column
 	private BigDecimal primeExceptionnelle;
+
+	public BulletinSalaire() {
+		super();
+	}
+
+	public BulletinSalaire(RemunerationEmploye remunerationEmploye, Periode periode, BigDecimal primeExceptionnelle) {
+		this.remunerationEmploye = remunerationEmploye;
+		this.periode = periode;
+		this.primeExceptionnelle = primeExceptionnelle;
+	}
 
 	public RemunerationEmploye getRemunerationEmploye() {
 		return remunerationEmploye;

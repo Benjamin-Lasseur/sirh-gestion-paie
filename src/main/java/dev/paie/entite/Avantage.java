@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -23,6 +25,27 @@ public class Avantage {
 	private String nom;
 	@Column
 	private BigDecimal montant;
+	@ManyToOne
+	@JoinColumn(name = "ID_PROFIL")
+	private ProfilRemuneration profil;
+
+	public Avantage(String code, String nom, BigDecimal montant) {
+		this.code = code;
+		this.nom = nom;
+		this.montant = montant;
+	}
+
+	public Avantage() {
+		super();
+	}
+
+	public ProfilRemuneration getProfil() {
+		return profil;
+	}
+
+	public void setProfil(ProfilRemuneration profil) {
+		this.profil = profil;
+	}
 
 	public String getCode() {
 		return code;

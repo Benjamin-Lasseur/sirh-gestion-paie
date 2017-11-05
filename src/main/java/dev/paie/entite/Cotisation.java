@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -31,11 +33,30 @@ public class Cotisation {
 	@Column
 	private BigDecimal tauxPatronal;
 
+	@ManyToOne
+	@JoinColumn(name = "ID_PROFIL")
+	private ProfilRemuneration profil;
+
+	public Cotisation(String code, String libelle, BigDecimal tauxS, BigDecimal tauxP) {
+		this.code = code;
+		this.libelle = libelle;
+		this.tauxSalarial = tauxS;
+		this.tauxPatronal = tauxP;
+	}
+
 	/**
 	 * Constructeur Jpa
 	 */
 	public Cotisation() {
 		super();
+	}
+
+	public ProfilRemuneration getProfil() {
+		return profil;
+	}
+
+	public void setProfil(ProfilRemuneration profil) {
+		this.profil = profil;
 	}
 
 	public String getCode() {
