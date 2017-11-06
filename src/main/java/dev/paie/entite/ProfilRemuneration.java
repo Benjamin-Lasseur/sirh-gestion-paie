@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,24 +21,24 @@ public class ProfilRemuneration {
 	@Column
 	private String code;
 
-	@OneToMany(mappedBy = "profil")
+	@ManyToMany
+	@JoinTable(name = "PRO_COT_N_IMP", joinColumns = @JoinColumn(name = "ID_PRO", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_N_IMP", referencedColumnName = "ID"))
 	private List<Cotisation> cotisationsNonImposables;
 
-	@OneToMany(mappedBy = "profil")
+	@ManyToMany
+	@JoinTable(name = "PRO_COT_IMP", joinColumns = @JoinColumn(name = "ID_PRO", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_IMP", referencedColumnName = "ID"))
 	private List<Cotisation> cotisationsImposables;
 
-	@OneToMany(mappedBy = "profil")
+	@ManyToMany
+	@JoinTable(name = "PRO_AVA", joinColumns = @JoinColumn(name = "ID_PRO", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_AVA", referencedColumnName = "ID"))
 	private List<Avantage> avantages;
 
 	public ProfilRemuneration(String code, List<Cotisation> cotImp, List<Cotisation> cotNonImp,
 			List<Avantage> avantages) {
 		this.code = code;
 		this.cotisationsImposables = cotImp;
-		this.cotisationsImposables.forEach(cot -> cot.setProfil(this));
 		this.cotisationsNonImposables = cotNonImp;
-		this.cotisationsNonImposables.forEach(cot -> cot.setProfil(this));
 		this.avantages = avantages;
-		this.avantages.forEach(av -> av.setProfil(this));
 	}
 
 	public ProfilRemuneration() {

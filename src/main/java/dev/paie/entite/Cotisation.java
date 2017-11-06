@@ -33,10 +33,6 @@ public class Cotisation {
 	@Column
 	private BigDecimal tauxPatronal;
 
-	@ManyToOne
-	@JoinColumn(name = "ID_PROFIL")
-	private ProfilRemuneration profil;
-
 	public Cotisation(String code, String libelle, BigDecimal tauxS, BigDecimal tauxP) {
 		this.code = code;
 		this.libelle = libelle;
@@ -49,14 +45,6 @@ public class Cotisation {
 	 */
 	public Cotisation() {
 		super();
-	}
-
-	public ProfilRemuneration getProfil() {
-		return profil;
-	}
-
-	public void setProfil(ProfilRemuneration profil) {
-		this.profil = profil;
 	}
 
 	public String getCode() {

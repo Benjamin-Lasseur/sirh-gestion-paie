@@ -69,7 +69,7 @@ public class MappageCompletTest {
 
 		RemunerationEmploye employe = new RemunerationEmploye("MATR1", entreprise, profilRemuneration, grade);
 
-		Periode periode = new Periode(new Date(117, 11, 5), new Date(117, 11, 5));
+		Periode periode = new Periode(LocalDate.of(2017, 01, 15), LocalDate.of(2018, 01, 15));
 
 		BulletinSalaire bulletinSalaire = new BulletinSalaire(employe, periode, new BigDecimal(50));
 		profilRemunerationRepository.save(profilRemuneration);

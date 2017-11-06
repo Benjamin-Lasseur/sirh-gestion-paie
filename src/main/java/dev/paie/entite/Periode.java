@@ -1,14 +1,12 @@
 package dev.paie.entite;
 
 import java.time.LocalDate;
-import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Periode {
@@ -16,16 +14,16 @@ public class Periode {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Temporal(TemporalType.TIME)
-	private Date dateDebut;
-	@Temporal(TemporalType.TIME)
-	private Date dateFin;
+	@Column
+	private LocalDate dateDebut;
+	@Column
+	private LocalDate dateFin;
 
 	public Periode() {
 		super();
 	}
 
-	public Periode(Date dateDebut, Date dateFin) {
+	public Periode(LocalDate dateDebut, LocalDate dateFin) {
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 	}
@@ -38,19 +36,33 @@ public class Periode {
 		this.id = id;
 	}
 
-	public Date getDateDebut() {
+	/**
+	 * @return the dateDebut
+	 */
+	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateDebut(Date dateDebut) {
+	/**
+	 * @param dateDebut
+	 *            the dateDebut to set
+	 */
+	public void setDateDebut(LocalDate dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
-	public Date getDateFin() {
+	/**
+	 * @return the dateFin
+	 */
+	public LocalDate getDateFin() {
 		return dateFin;
 	}
 
-	public void setDateFin(Date dateFin) {
+	/**
+	 * @param dateFin
+	 *            the dateFin to set
+	 */
+	public void setDateFin(LocalDate dateFin) {
 		this.dateFin = dateFin;
 	}
 

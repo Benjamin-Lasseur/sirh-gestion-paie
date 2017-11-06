@@ -25,9 +25,6 @@ public class Avantage {
 	private String nom;
 	@Column
 	private BigDecimal montant;
-	@ManyToOne
-	@JoinColumn(name = "ID_PROFIL")
-	private ProfilRemuneration profil;
 
 	public Avantage(String code, String nom, BigDecimal montant) {
 		this.code = code;
@@ -37,14 +34,6 @@ public class Avantage {
 
 	public Avantage() {
 		super();
-	}
-
-	public ProfilRemuneration getProfil() {
-		return profil;
-	}
-
-	public void setProfil(ProfilRemuneration profil) {
-		this.profil = profil;
 	}
 
 	public String getCode() {
