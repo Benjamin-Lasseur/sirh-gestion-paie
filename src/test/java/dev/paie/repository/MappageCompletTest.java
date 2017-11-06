@@ -72,14 +72,14 @@ public class MappageCompletTest {
 		Periode periode = new Periode(LocalDate.of(2017, 01, 15), LocalDate.of(2018, 01, 15));
 
 		BulletinSalaire bulletinSalaire = new BulletinSalaire(employe, periode, new BigDecimal(50));
-		profilRemunerationRepository.save(profilRemuneration);
-		cotisationRepository.save(cotImp);
-		cotisationRepository.save(cotNonImp);
-		entrepriseRepository.save(entreprise);
-		gradeRepository.save(grade);
-		employeRepository.save(employe);
 		avantageRepository.save(avantages);
 		periodeRepository.save(periode);
+		cotisationRepository.save(cotImp);
+		cotisationRepository.save(cotNonImp);
+		gradeRepository.save(grade);
+		profilRemunerationRepository.save(profilRemuneration);
+		entrepriseRepository.save(entreprise);
+		employeRepository.save(employe);
 		bulletinSalaireRepository.save(bulletinSalaire);
 
 	}
