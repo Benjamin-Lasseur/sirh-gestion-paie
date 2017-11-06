@@ -45,6 +45,10 @@ public class ProfilRemuneration {
 		super();
 	}
 
+	public String toString() {
+		return this.code;
+	}
+
 	public Integer getId() {
 		return id;
 	}

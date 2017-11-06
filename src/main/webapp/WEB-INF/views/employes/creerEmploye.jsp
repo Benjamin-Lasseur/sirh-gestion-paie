@@ -1,5 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isELIgnored="false"%>
+<%@page import="dev.paie.entite.RemunerationEmploye"%>
+<%@page import="dev.paie.entite.Grade"%>
+<%@page import="dev.paie.entite.Entreprise"%>
+<%@page import="dev.paie.entite.ProfilRemuneration"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -55,53 +60,50 @@
 		</div>
 	</div>
 	<div class="container">
-		<form method="POST" action="<c:url value="/employes/creer"/>">
+		<form:form method="post" modelAttribute="remunerationEmploye"
+			action='creer'>
 			<div class="form-group">
 				<div class="row">
 					<div class="col-4">
 						<label class="text-right" for="matricule">Matricule</label>
 					</div>
 					<div class="col-8">
-						<input type="text" class="form-control" id="matricule"
-							name="Matricule" placeholder="ex:M00">
+						<form:input path="matricule"></form:input>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-4">
-						<label class="text-right" for="Entreprise">Entreprise</label>
+						<label class="text-right">Entreprise</label>
 					</div>
 					<div class="col-8">
-						<select class="form-control" name="Entreprise">
-							<c:forEach items="${entreprises}" var="entreprise">
-								<option>${entreprise.denomination}</option>
-							</c:forEach>
-						</select>
+						<form:select path="Entreprise">
+							<form:option value="-" label="Veuillez selectionner" />
+							<form:options items="${entreprises}" itemLabel="denomination" />
+						</form:select>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-4">
-						<label class="text-right" for="matricule">Grade</label>
+						<label class="text-right">Grade</label>
 					</div>
 					<div class="col-8">
-						<select class="form-control" name="Grade">
-							<c:forEach items="${grades}" var="grade">
-								<option>${grade.code}</option>
-							</c:forEach>
-						</select>
+						<form:select path="Grade">
+							<form:option value="-" label="Veuillez selectionner" />
+							<form:options items="${grades}" itemLabel="code" />
+						</form:select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-4">
-						<label class="text-right" for="matricule">Profil</label>
+						<label class="text-right">Profil</label>
 					</div>
 					<div class="col-8">
-						<select class="form-control" name="Profil">
-							<c:forEach items="${profils}" var="profil">
-								<option>${profil.code}</option>
-							</c:forEach>
-						</select>
+						<form:select path="profilRemuneration">
+							<form:option value="-" label="Veuillez selectionner" />
+							<form:options items="${profils}" itemLabel="code" />
+						</form:select>
 					</div>
 				</div>
 
@@ -111,7 +113,7 @@
 					</div>
 				</div>
 			</div>
-		</form>
+		</form:form>
 
 
 

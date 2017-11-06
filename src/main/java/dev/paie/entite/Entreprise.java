@@ -30,6 +30,10 @@ public class Entreprise {
 		this.codeNaf = codeNaf;
 	}
 
+	public String toString() {
+		return this.denomination;
+	}
+
 	public Entreprise() {
 		super();
 	}
