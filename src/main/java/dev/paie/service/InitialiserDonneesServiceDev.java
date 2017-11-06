@@ -28,7 +28,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"classpath:cotisations-imposables.xml", "classpath:cotisations-non-imposables.xml",
-				"classpath:entreprise.xml", "classpath:grade.xml", "classpath:profil-remuneration.xml");
+				"classpath:entreprises.xml", "classpath:grades.xml", "classpath:profils-remuneration.xml");
 		context.getBeansOfType(Cotisation.class).values().forEach(cot -> em.persist(cot));
 		context.getBeansOfType(Entreprise.class).values().forEach(ent -> em.persist(ent));
 		context.getBeansOfType(Grade.class).values().forEach(gra -> em.persist(gra));

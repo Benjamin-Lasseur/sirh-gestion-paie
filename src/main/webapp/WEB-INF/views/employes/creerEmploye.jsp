@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,7 +16,110 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<h1>Créer employé</h1>
+
+
+	<div class="container-fluid">
+
+
+		<div class="row">
+			<div class="col-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="#">Gestionnaire de paie</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active"><a class="nav-link" href="#">Employés
+									<span class="sr-only">(current)</span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Bulletins</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2 offset-1">
+				<a onclick="retour()"><img
+					src="http://pixsector.com/cache/a8009c95/av8a49a4f81c3318dc69d.png"
+					alt="Flèche retour" class="rounded" width="100px" height="100px"></a>
+			</div>
+			<div class="col-8 offset-1">
+				<h1>Ajouter un employé</h1>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<form method="POST" action="<c:url value="/employes/creer"/>">
+			<div class="form-group">
+				<div class="row">
+					<div class="col-4">
+						<label class="text-right" for="matricule">Matricule</label>
+					</div>
+					<div class="col-8">
+						<input type="text" class="form-control" id="matricule"
+							name="Matricule" placeholder="ex:M00">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-4">
+						<label class="text-right" for="Entreprise">Entreprise</label>
+					</div>
+					<div class="col-8">
+						<select class="form-control" name="Entreprise">
+							<c:forEach items="${entreprises}" var="entreprise">
+								<option>${entreprise.denomination}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-4">
+						<label class="text-right" for="matricule">Grade</label>
+					</div>
+					<div class="col-8">
+						<select class="form-control" name="Grade">
+							<c:forEach items="${grades}" var="grade">
+								<option>${grade.code}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4">
+						<label class="text-right" for="matricule">Profil</label>
+					</div>
+					<div class="col-8">
+						<select class="form-control" name="Profil">
+							<c:forEach items="${profils}" var="profil">
+								<option>${profil.code}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="offset-9">
+						<button type="submit" class="btn btn-primary">Ajouter</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+	</div>
+
+
+
+
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
