@@ -13,8 +13,12 @@ import dev.paie.entite.Grade;
 @Repository
 public class GradeServiceJdbcTemplate implements GradeService {
 
+	/** jdbcTemplate : JdbcTemplate */
 	private JdbcTemplate jdbcTemplate;
 
+	/* (non-Javadoc)
+	 * @see dev.paie.service.GradeService#sauvegarder(dev.paie.entite.Grade)
+	 */
 	@Override
 	public void sauvegarder(Grade nouveauGrade) {
 		String sql = "INSERT INTO GRADE(CODE,NBHEURESBASE,TAUXBASE) VALUES(?,?,?)";
@@ -23,6 +27,9 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see dev.paie.service.GradeService#mettreAJour(dev.paie.entite.Grade)
+	 */
 	@Override
 	public void mettreAJour(Grade grade) {
 		String sql = "UPDATE GRADE SET CODE=?, NBHEURESBASE=?, TAUXBASE=? WHERE ID=?";
@@ -30,12 +37,18 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see dev.paie.service.GradeService#lister()
+	 */
 	@Override
 	public List<Grade> lister() {
 		String sql = "SELECT * FROM GRADE";
 		return this.jdbcTemplate.query(sql, new GradeMapper());
 	}
 
+	/**
+	 * @param dataSource
+	 */
 	@Autowired
 	public GradeServiceJdbcTemplate(DataSource dataSource) {
 		super();

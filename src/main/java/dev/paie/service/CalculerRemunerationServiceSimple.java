@@ -12,9 +12,13 @@ import dev.paie.util.PaieUtils;
 @Service
 public class CalculerRemunerationServiceSimple implements CalculerRemunerationService {
 
+	/** paieUtils : PaieUtils */
 	@Autowired
 	private PaieUtils paieUtils;
 
+	/* (non-Javadoc)
+	 * @see dev.paie.service.CalculerRemunerationService#calculer(dev.paie.entite.BulletinSalaire)
+	 */
 	@Override
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
 		ResultatCalculRemuneration resultat = new ResultatCalculRemuneration();

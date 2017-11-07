@@ -16,8 +16,6 @@
 	crossorigin="anonymous">
 </head>
 <body>
-
-
 	<div class="container-fluid">
 
 
@@ -46,82 +44,38 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-2 offset-1">
-				<a href="<c:url value='/mvc/employes/lister'/>"><img
-					src="http://pixsector.com/cache/a8009c95/av8a49a4f81c3318dc69d.png"
-					alt="Flèche retour" class="rounded" width="100px" height="100px"></a>
-			</div>
-			<div class="col-8 offset-1">
-				<h1>Ajouter un employé</h1>
+			<div class="col-8 offset-4">
+				<h1>Lister les employés</h1>
 			</div>
 		</div>
 	</div>
 	<div class="container">
-		<form method="POST" action="<c:url value="/mvc/employes/creer"/>">
-			<div class="form-group">
-				<div class="row">
-					<div class="col-4">
-						<label class="text-right" for="matricule">Matricule</label>
-					</div>
-					<div class="col-8">
-						<input type="text" class="form-control" id="matricule"
-							name="Matricule" placeholder="ex:M00">
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-4">
-						<label class="text-right" for="Entreprise">Entreprise</label>
-					</div>
-					<div class="col-8">
-						<select class="form-control" name="Entreprise">
-							<c:forEach items="${entreprises}" var="entreprise">
-								<option>${entreprise.denomination}</option>
-							</c:forEach>
-						</select>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-4">
-						<label class="text-right" for="matricule">Grade</label>
-					</div>
-					<div class="col-8">
-						<select class="form-control" name="Grade">
-							<c:forEach items="${grades}" var="grade">
-								<option value="${grade.code}">${grade.code}-
-									${grade.salaireAnnuel} &#8364/an</option>
-							</c:forEach>
-						</select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-4">
-						<label class="text-right" for="matricule">Profil</label>
-					</div>
-					<div class="col-8">
-						<select class="form-control" name="Profil">
-							<c:forEach items="${profils}" var="profil">
-								<option>${profil.code}</option>
-							</c:forEach>
-						</select>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="offset-9">
-						<button type="submit" class="btn btn-primary">Ajouter</button>
-					</div>
-				</div>
-			</div>
-		</form>
-
-
-
+		<div class="row">
+			<a href="<c:url value="/mvc/employes/creer"/>"> <input
+				type="button" value="Ajouter" class="btn btn-primary">
+			</a>
+		</div>
+		<div class="row">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Date et heure de création</th>
+						<th scope="col">Matricule</th>
+						<th scope="col">Grade</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${employes}" var="employe">
+						<tr>
+							<th>${employe.dateCreation}</th>
+							<td>${employe.matricule }</td>
+							<td>${employe.grade.code}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
-
-
-
 
 
 	<!-- Optional JavaScript -->

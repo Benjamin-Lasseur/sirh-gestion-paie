@@ -27,10 +27,10 @@ public class Cotisation {
 	@Column
 	private String libelle;
 	/** tauxSalarial : BigDecimal */
-	@Column
+	@Column(precision=19, scale=6)
 	private BigDecimal tauxSalarial;
 	/** tauxPatronal : BigDecimal */
-	@Column
+	@Column(precision=19, scale=6)
 	private BigDecimal tauxPatronal;
 
 	public Cotisation(String code, String libelle, BigDecimal tauxS, BigDecimal tauxP) {

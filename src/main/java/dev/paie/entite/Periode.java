@@ -18,6 +18,8 @@ public class Periode {
 	private LocalDate dateDebut;
 	@Column
 	private LocalDate dateFin;
+	@Column
+	private String libelle;
 
 	public Periode() {
 		super();
@@ -26,6 +28,7 @@ public class Periode {
 	public Periode(LocalDate dateDebut, LocalDate dateFin) {
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
+		this.libelle = dateDebut.toString() + " --> " + dateFin.toString();
 	}
 
 	public Integer getId() {
@@ -64,6 +67,21 @@ public class Periode {
 	 */
 	public void setDateFin(LocalDate dateFin) {
 		this.dateFin = dateFin;
+	}
+
+	/**
+	 * @return the libelle
+	 */
+	public String getLibelle() {
+		return libelle;
+	}
+
+	/**
+	 * @param libelle
+	 *            the libelle to set
+	 */
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
 
 }

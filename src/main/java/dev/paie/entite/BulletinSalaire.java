@@ -1,6 +1,7 @@
 package dev.paie.entite;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class BulletinSalaire {
@@ -24,6 +24,8 @@ public class BulletinSalaire {
 	private Periode periode;
 	@Column
 	private BigDecimal primeExceptionnelle;
+	@Column
+	private LocalDateTime dateCreation;
 
 	public BulletinSalaire() {
 		super();
@@ -33,6 +35,12 @@ public class BulletinSalaire {
 		this.remunerationEmploye = remunerationEmploye;
 		this.periode = periode;
 		this.primeExceptionnelle = primeExceptionnelle;
+	}
+
+	public BulletinSalaire(RemunerationEmploye remunerationEmploye, Periode periode, BigDecimal prime,
+			LocalDateTime date) {
+		this(remunerationEmploye, periode, prime);
+		this.dateCreation = date;
 	}
 
 	public RemunerationEmploye getRemunerationEmploye() {
@@ -65,6 +73,21 @@ public class BulletinSalaire {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the dateCreation
+	 */
+	public LocalDateTime getDateCreation() {
+		return dateCreation;
+	}
+
+	/**
+	 * @param dateCreation
+	 *            the dateCreation to set
+	 */
+	public void setDateCreation(LocalDateTime dateCreation) {
+		this.dateCreation = dateCreation;
 	}
 
 }

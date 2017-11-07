@@ -34,49 +34,33 @@
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
-							<li class="nav-item active"><a class="nav-link"
-								href="<c:url value='/mvc/employes/lister'/>">Employés <span
-									class="sr-only">(current)</span>
-							</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="<c:url value='/mvc/bulletins/lister'/>">Bulletins</a></li>
+								href="<c:url value='/mvc/employes/lister'/>">Employés </a></li>
+							<li class="nav-item active"><a class="nav-link"
+								href="<c:url value='/mvc/bulletins/lister'/>">Bulletins<span
+									class="sr-only">(current)</span></a></li>
 						</ul>
 					</div>
 				</nav>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-2 offset-1">
-				<a href="<c:url value='/mvc/employes/lister'/>"><img
-					src="http://pixsector.com/cache/a8009c95/av8a49a4f81c3318dc69d.png"
-					alt="Flèche retour" class="rounded" width="100px" height="100px"></a>
-			</div>
-			<div class="col-8 offset-1">
-				<h1>Ajouter un employé</h1>
+			<div class="col-8 offset-4">
+				<h1>Créer un bulletin</h1>
 			</div>
 		</div>
 	</div>
 	<div class="container">
-		<form method="POST" action="<c:url value="/mvc/employes/creer"/>">
+		<form method="POST" action="<c:url value="/mvc/bulletins/creer"/>">
 			<div class="form-group">
 				<div class="row">
 					<div class="col-4">
-						<label class="text-right" for="matricule">Matricule</label>
+						<label class="text-right" for="Periode">Periode</label>
 					</div>
 					<div class="col-8">
-						<input type="text" class="form-control" id="matricule"
-							name="Matricule" placeholder="ex:M00">
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-4">
-						<label class="text-right" for="Entreprise">Entreprise</label>
-					</div>
-					<div class="col-8">
-						<select class="form-control" name="Entreprise">
-							<c:forEach items="${entreprises}" var="entreprise">
-								<option>${entreprise.denomination}</option>
+						<select class="form-control" name="Periode">
+							<c:forEach items="${periodes}" var="periode">
+								<option>${periode.libelle}</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -84,29 +68,25 @@
 
 				<div class="row">
 					<div class="col-4">
-						<label class="text-right" for="matricule">Grade</label>
+						<label class="text-right" for="Matricule">Matricule</label>
 					</div>
 					<div class="col-8">
-						<select class="form-control" name="Grade">
-							<c:forEach items="${grades}" var="grade">
-								<option value="${grade.code}">${grade.code}-
-									${grade.salaireAnnuel} &#8364/an</option>
+						<select class="form-control" name="Matricule">
+							<c:forEach items="${employes}" var="employe">
+								<option>${employe.matricule}</option>
 							</c:forEach>
 						</select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-4">
-						<label class="text-right" for="matricule">Profil</label>
+						<label class="text-right" for="Prime">Prime exceptionnelle</label>
 					</div>
 					<div class="col-8">
-						<select class="form-control" name="Profil">
-							<c:forEach items="${profils}" var="profil">
-								<option>${profil.code}</option>
-							</c:forEach>
-						</select>
+						<input type="text" class="form-control" id="Prime" name="Prime">
 					</div>
 				</div>
+
 
 				<div class="row">
 					<div class="offset-9">

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
+import dev.paie.util.PaieUtils;
+
 @Entity
 public class Grade {
 
@@ -21,8 +23,12 @@ public class Grade {
 	private String code;
 	@Column
 	private BigDecimal nbHeuresBase;
-	@Column
+	@Column(precision = 19, scale = 6)
 	private BigDecimal tauxBase;
+
+	public String getSalaireAnnuel() {
+		return new PaieUtils().formaterBigDecimal(nbHeuresBase.multiply(tauxBase).multiply(new BigDecimal("12")));
+	}
 
 	public Grade() {
 		super();

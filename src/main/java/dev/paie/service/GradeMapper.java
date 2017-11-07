@@ -10,6 +10,9 @@ import dev.paie.entite.Grade;
 
 public class GradeMapper implements RowMapper<Grade> {
 
+	/* 
+	 * Mappage de l'objet Grade
+	 */
 	@Override
 	public Grade mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Grade grade = new Grade();
