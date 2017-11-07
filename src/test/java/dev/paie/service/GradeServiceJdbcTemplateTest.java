@@ -27,22 +27,6 @@ public class GradeServiceJdbcTemplateTest {
 	@Autowired
 	private GradeService gradeService;
 
-	/** dataSource : DataSource */
-	@Autowired
-	DataSource dataSource;
-
-	/** jdbcTemplate : JdbcTemplate */
-	private JdbcTemplate jdbcTemplate;
-
-	/**
-	 * Truncate de la table avant les tests
-	 */
-	@Before
-	public void truncate() {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcTemplate.execute("TRUNCATE TABLE GRADE");
-	}
-
 	/**
 	 * test de sauvegarde et de modification
 	 */

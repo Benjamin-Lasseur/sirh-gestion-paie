@@ -15,6 +15,12 @@
 
 	<build>
 		<finalName>paie</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -27,7 +33,62 @@
 		</pluginManagement>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.driver>org.h2.Driver</jdbc.driver>
+				<jdbc.url>jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1</jdbc.url>
+				<jdbc.user>sa</jdbc.user>
+				<jdbc.pass></jdbc.pass>
+				<hibernate.dialect>org.hibernate.dialect.H2Dialect</hibernate.dialect>
+				<schema-generation.database.action>drop-and-create</schema-generation.database.action>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+					<version>1.4.196</version>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<id>prod</id>
+			<properties>
+				<jdbc.driver>org.mariadb.jdbc.Driver</jdbc.driver>
+				<jdbc.url>jdbc:mysql://localhost:3306/sirhpaie</jdbc.url>
+				<jdbc.user>root</jdbc.user>
+				<jdbc.pass></jdbc.pass>
+				<schema-generation.database.action>drop-and-create</schema-generation.database.action>
+				<hibernate.dialect>org.hibernate.dialect.MySQL57InnoDBDialect</hibernate.dialect>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+					<version>5.1.41</version>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
 	<dependencies>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.196</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.41</version>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
