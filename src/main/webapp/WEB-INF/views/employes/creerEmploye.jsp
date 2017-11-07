@@ -1,5 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isELIgnored="false"%>
+<%@page import="dev.paie.entite.RemunerationEmploye"%>
+<%@page import="dev.paie.entite.Grade"%>
+<%@page import="dev.paie.entite.Entreprise"%>
+<%@page import="dev.paie.entite.ProfilRemuneration"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -58,25 +63,27 @@
 	</div>
 	<div class="container">
 		<form method="POST" action="<c:url value="/mvc/employes/creer"/>">
+
 			<div class="form-group">
 				<div class="row">
 					<div class="col-4">
-						<label class="text-right" for="matricule">Matricule</label>
+						<label class="text-right" for="Matricule">Matricule</label>
 					</div>
 					<div class="col-8">
-						<input type="text" class="form-control" id="matricule"
+						<input type="text" class="form-control" id="Matricule"
 							name="Matricule" placeholder="ex:M00">
 					</div>
 				</div>
 
+
 				<div class="row">
 					<div class="col-4">
-						<label class="text-right" for="Entreprise">Entreprise</label>
+						<label class="text-right">Entreprise</label>
 					</div>
 					<div class="col-8">
 						<select class="form-control" name="Entreprise">
 							<c:forEach items="${entreprises}" var="entreprise">
-								<option>${entreprise.denomination}</option>
+								<option>${entreprise.denomination }</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -84,7 +91,7 @@
 
 				<div class="row">
 					<div class="col-4">
-						<label class="text-right" for="matricule">Grade</label>
+						<label class="text-right">Grade</label>
 					</div>
 					<div class="col-8">
 						<select class="form-control" name="Grade">
@@ -93,16 +100,17 @@
 									${grade.salaireAnnuel} &#8364/an</option>
 							</c:forEach>
 						</select>
+
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-4">
-						<label class="text-right" for="matricule">Profil</label>
+						<label class="text-right">Profil</label>
 					</div>
 					<div class="col-8">
 						<select class="form-control" name="Profil">
 							<c:forEach items="${profils}" var="profil">
-								<option>${profil.code}</option>
+								<option>${profil.code }</option>
 							</c:forEach>
 						</select>
 					</div>

@@ -1,19 +1,16 @@
 package dev.paie.web.controller;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import dev.paie.entite.Entreprise;
-import dev.paie.entite.Grade;
-import dev.paie.entite.ProfilRemuneration;
 import dev.paie.entite.RemunerationEmploye;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
@@ -35,6 +32,7 @@ public class RemunerationEmployeController {
 	@Autowired
 	private ProfilRemunerationRepository profilRepository;
 	/** employeRepository : RemunerationEmployeRepository */
+
 	@Autowired
 	private RemunerationEmployeRepository employeRepository;
 
@@ -44,12 +42,13 @@ public class RemunerationEmployeController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
-	public ModelAndView creerEmploye() {
+	public ModelAndView creerEmploye(Model model) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/creerEmploye");
 		mv.addObject("entreprises", entrepriseRepository.findAll());
 		mv.addObject("grades", gradeRepository.findAll());
 		mv.addObject("profils", profilRepository.findAll());
+		model.addAttribute("remunerationEmploye", new RemunerationEmploye());
 		return mv;
 	}
 

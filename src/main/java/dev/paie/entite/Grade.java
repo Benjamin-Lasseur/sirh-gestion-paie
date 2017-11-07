@@ -40,6 +40,10 @@ public class Grade {
 		this.tauxBase = tauxBase;
 	}
 
+	public String toString() {
+		return this.code;
+	}
+
 	public String getCode() {
 		return code;
 	}
