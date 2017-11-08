@@ -1,22 +1,18 @@
 package dev.paie.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.math.BigDecimal;
 import java.util.Optional;
 
-import javax.sql.DataSource;
-import static org.assertj.core.api.Assertions.*;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.GradeServiceJdbcTemplateTestConfig;
-import dev.paie.config.SecurityConfig;
 import dev.paie.entite.Grade;
-import dev.paie.spring.DataSourceMySQLConfig;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
 @ContextConfiguration(classes = { GradeServiceJdbcTemplateTestConfig.class })

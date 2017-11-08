@@ -12,9 +12,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import dev.paie.spring.DataSourceMySQLConfig;
+
 @Configuration
 @EnableWebSecurity
-@Import(ServicesConfig.class)
+@Import({ ServicesConfig.class, DataSourceMySQLConfig.class })
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 

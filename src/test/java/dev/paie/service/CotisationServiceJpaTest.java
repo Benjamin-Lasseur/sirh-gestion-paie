@@ -1,5 +1,7 @@
 package dev.paie.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.math.BigDecimal;
 import java.util.Optional;
 
@@ -8,12 +10,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import static org.assertj.core.api.Assertions.*;
 
 import dev.paie.config.CotisationServiceJpaTestConfig;
-import dev.paie.config.SecurityConfig;
 import dev.paie.entite.Cotisation;
-import dev.paie.spring.JpaConfig;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
 @ContextConfiguration(classes = { CotisationServiceJpaTestConfig.class })

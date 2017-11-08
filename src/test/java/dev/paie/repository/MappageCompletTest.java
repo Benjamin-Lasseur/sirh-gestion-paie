@@ -3,7 +3,6 @@ package dev.paie.repository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -13,7 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.MappageCompletTestConfig;
-import dev.paie.config.SecurityConfig;
 import dev.paie.entite.Avantage;
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.Cotisation;
@@ -22,7 +20,6 @@ import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
 import dev.paie.entite.RemunerationEmploye;
-import dev.paie.spring.JpaConfig;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
 @ContextConfiguration(classes = { MappageCompletTestConfig.class })
