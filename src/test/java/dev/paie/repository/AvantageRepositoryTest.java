@@ -3,10 +3,6 @@ package dev.paie.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,19 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import dev.paie.config.SecurityConfig;
+import dev.paie.config.AvantageRepositoryTestConfig;
 import dev.paie.entite.Avantage;
-import dev.paie.entite.BulletinSalaire;
-import dev.paie.entite.Cotisation;
-import dev.paie.entite.Entreprise;
-import dev.paie.entite.Grade;
-import dev.paie.entite.Periode;
-import dev.paie.entite.ProfilRemuneration;
-import dev.paie.entite.RemunerationEmploye;
-import dev.paie.spring.JpaConfig;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
-@ContextConfiguration(classes = { JpaConfig.class, SecurityConfig.class })
+@ContextConfiguration(classes = { AvantageRepositoryTestConfig.class })
 // Configuration JUnit pour que Spring prenne la main sur le cycle de vie du
 // test
 @RunWith(SpringRunner.class)

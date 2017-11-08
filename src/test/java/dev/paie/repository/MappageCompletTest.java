@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.MappageCompletTestConfig;
 import dev.paie.config.SecurityConfig;
 import dev.paie.entite.Avantage;
 import dev.paie.entite.BulletinSalaire;
@@ -24,7 +25,7 @@ import dev.paie.entite.RemunerationEmploye;
 import dev.paie.spring.JpaConfig;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
-@ContextConfiguration(classes = { JpaConfig.class, SecurityConfig.class })
+@ContextConfiguration(classes = { MappageCompletTestConfig.class })
 // Configuration JUnit pour que Spring prenne la main sur le cycle de vie du
 // test
 @RunWith(SpringRunner.class)
