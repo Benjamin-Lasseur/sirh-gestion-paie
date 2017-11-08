@@ -11,8 +11,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import dev.paie.spring.JpaConfig;
 
 @Configuration
+@Import({ JpaConfig.class, SecurityConfig.class })
 @EnableWebMvc
-@Import(JpaConfig.class)
 @ComponentScan({ "dev.paie.web.controller", "dev.paie.spring", "dev.paie.listener" })
 public class WebAppConfig {
 	@Bean

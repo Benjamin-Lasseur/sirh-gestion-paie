@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +24,8 @@ import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
 import dev.paie.entite.RemunerationEmploye;
+import dev.paie.entite.Utilisateur;
+import dev.paie.entite.Utilisateur.ROLES;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
 
@@ -44,8 +47,12 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	/** grades : GradeRepository */
 	@Autowired
 	private GradeRepository grades;
+	@Autowired
+	private PasswordEncoder passEncoder;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dev.paie.service.InitialiserDonneesService#initialiser()
 	 */
 	@Override
@@ -90,6 +97,9 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		bulletins.add(new BulletinSalaire(employes.get(3), periodes.get(0), new BigDecimal("152"),
 				LocalDateTime.of(2017, 06, 01, 10, 18)));
 		bulletins.forEach(bulletin -> em.persist(bulletin));
+
+		em.persist(new Utilisateur("Lasseur", passEncoder.encode("0000"), true, ROLES.ROLE_ADMINISTRATEUR));
+		em.persist(new Utilisateur("Chidaine", passEncoder.encode("0000"), true, ROLES.ROLE_UTILISATEUR));
 
 		context.close();
 	}

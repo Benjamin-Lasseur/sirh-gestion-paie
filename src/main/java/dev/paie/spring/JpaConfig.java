@@ -1,7 +1,6 @@
 package dev.paie.spring;
 
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -22,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Import(DataSourceMySQLConfig.class)
 @EnableTransactionManagement
 @EnableJpaRepositories("dev.paie.repository")
-@PropertySource("app.properties")
+@PropertySource("classpath:app.properties")
 public class JpaConfig {
 	/**
 	 * Bean PlatformTransactionManager

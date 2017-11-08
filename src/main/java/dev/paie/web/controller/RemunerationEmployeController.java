@@ -3,6 +3,7 @@ package dev.paie.web.controller;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -41,7 +42,9 @@ public class RemunerationEmployeController {
 	 * 
 	 * @return
 	 */
+
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerEmploye(Model model) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/creerEmploye");
@@ -61,7 +64,9 @@ public class RemunerationEmployeController {
 	 * @param grade
 	 * @return
 	 */
+
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView ajouterEmploye(@RequestParam("Matricule") String matricule,
 			@RequestParam("Entreprise") String entreprise, @RequestParam("Profil") String profil,
 			@RequestParam("Grade") String grade) {
@@ -86,7 +91,9 @@ public class RemunerationEmployeController {
 	 * 
 	 * @return
 	 */
+
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	public ModelAndView listerEmploye() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/listerEmployes");

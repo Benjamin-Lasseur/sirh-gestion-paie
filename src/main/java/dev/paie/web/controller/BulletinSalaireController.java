@@ -5,11 +5,9 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.paie.entite.BulletinSalaire;
-import dev.paie.entite.Cotisation;
-import dev.paie.entite.Periode;
-import dev.paie.entite.RemunerationEmploye;
 import dev.paie.entite.ResultatCalculRemuneration;
 import dev.paie.repository.BulletinSalaireRepository;
 import dev.paie.repository.PeriodeRepository;
@@ -51,7 +46,9 @@ public class BulletinSalaireController {
 	 * 
 	 * @return
 	 */
+
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	public ModelAndView listerBulletin() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/listerBulletins");
@@ -69,6 +66,7 @@ public class BulletinSalaireController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerBulletinInit() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/creerBulletin");
@@ -83,7 +81,9 @@ public class BulletinSalaireController {
 	 * @param req
 	 * @return
 	 */
+
 	@RequestMapping(method = RequestMethod.GET, path = "/visualiser/{id}")
+	@Secured({ "ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR" })
 	public ModelAndView visualiserBulletin(@PathVariable int id) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/visualiserBulletin");
@@ -108,6 +108,7 @@ public class BulletinSalaireController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerBulletin(@RequestParam("Periode") String periode,
 			@RequestParam("Matricule") String matricule, @RequestParam("Prime") String prime) {
 		ModelAndView mv = new ModelAndView();
