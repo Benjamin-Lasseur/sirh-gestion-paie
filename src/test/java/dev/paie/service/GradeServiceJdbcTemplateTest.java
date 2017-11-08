@@ -13,11 +13,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.SecurityConfig;
 import dev.paie.entite.Grade;
 import dev.paie.spring.DataSourceMySQLConfig;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
-@ContextConfiguration(classes = { DataSourceMySQLConfig.class })
+@ContextConfiguration(classes = { DataSourceMySQLConfig.class, SecurityConfig.class })
 // Configuration JUnit pour que Spring prenne la main sur le cycle de vie du
 // test
 @RunWith(SpringRunner.class)
